@@ -1,9 +1,40 @@
-
 </div>
                 </div>
                 <!-- /content -->
                 <!-- side -->
                 <div class="side">
+                    <?php if($APPLICATION->GetCurDir() != '/'){?>
+                    <!-- side menu -->
+                    <div class="side-block side-menu">
+                        <div class="title-block">Навигация</div>
+                        <div class="menu-block">
+                            <ul>
+                                <li><a href="">Кухни</a>
+                                </li>
+                                <li><a href="">Гарнитуры</a>
+                                </li>
+                                <li class="selected">
+                                    <a href="">Спальни</a>
+                                </li>
+                                <li>
+                                    <a href="">Шкафы</a>
+                                </li>
+                                <li><a href="">Столы</a>
+                                </li>
+                                <li><a href="">Стулья</a>
+                                </li>
+                                <li>
+                                    <a href="">Прихожие</a>
+                                </li>
+                                <li><a href="">Диваны</a>
+                                </li>
+                                <li><a href="">Кресла</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /side menu -->
+                    <?php }?>
                     <!-- side anonse -->
                     <div class="side-block side-anonse">
                         <div class="title-block"><span class="i i-title01"></span>Полезная информация!</div>
@@ -17,9 +48,9 @@
                         <div class="item-wrap">
                             <!-- side action -->
                             <div class="side-block side-action">
-                                <img src="./img/side-action-bg.jpg" alt="" class="bg">
+                                <img src="<?=SITE_TEMPLATE_PATH?>/img/side-action-bg.jpg" alt="" class="bg">
                                 <div class="photo-block">
-                                    <img src="./img/side-action.jpg" alt="">
+                                    <img src="<?=SITE_TEMPLATE_PATH?>/img/side-action.jpg" alt="">
                                 </div>
                                 <div class="text-block">
                                     <div class="title">Акция!</div>
@@ -39,7 +70,7 @@
 										<div class="inner-block">
 											<div class="title">
 												<div class="photo-block">
-													<img src="./img/side-opin.jpg" alt="">
+													<img src="<?=SITE_TEMPLATE_PATH?>/img/side-opin.jpg" alt="">
 												</div>
 												<div class="name-block"><a href="">Дмитрий Иванов</a></div>
 												<div class="pos-block">Генеральный директор,"Офис+"</div>
@@ -54,7 +85,7 @@
 										<div class="inner-block">
 											<div class="title">
 												<div class="photo-block">
-													<img src="./img/side-opin.jpg" alt="">
+													<img src="<?=SITE_TEMPLATE_PATH?>/img/side-opin.jpg" alt="">
 												</div>
 												<div class="name-block"><a href="">Дмитрий Иванов</a></div>
 												<div class="pos-block">Генеральный директор,"Офис+"</div>
@@ -120,7 +151,7 @@
                 </div>
             </nav>
             <div class="contacts-block">
-                <div class="title-block">Контактная информация</div>
+                <div class="title-block"><?= GetMessage('CONTACT_INFO');?></div>
                 <div class="loc-block">
                     <div class="address">ул. Летняя, стр.12, офис 512</div>
                     <div class="phone"><a href="tel:84952128506">8 (495) 212-85-06</a>
@@ -128,16 +159,16 @@
                 </div>
                 <div class="main-soc-block">
                     <a href="" class="soc-item">
-                        <img src="./img/icons/soc01.png" alt="">
+                        <img src="<?=SITE_TEMPLATE_PATH?>/img/icons/soc01.png" alt="">
                     </a>
                     <a href="" class="soc-item">
-                        <img src="./img/icons/soc02.png" alt="">
+                        <img src="<?=SITE_TEMPLATE_PATH?>/img/icons/soc02.png" alt="">
                     </a>
                     <a href="" class="soc-item">
-                        <img src="./img/icons/soc03.png" alt="">
+                        <img src="<?=SITE_TEMPLATE_PATH?>/img/icons/soc03.png" alt="">
                     </a>
                     <a href="" class="soc-item">
-                        <img src="./img/icons/soc04.png" alt="">
+                        <img src="<?=SITE_TEMPLATE_PATH?>/img/icons/soc04.png" alt="">
                     </a>
                 </div>
                 <div class="copy-block">© 2000 - 2012 "Мебельный магазин"</div>
