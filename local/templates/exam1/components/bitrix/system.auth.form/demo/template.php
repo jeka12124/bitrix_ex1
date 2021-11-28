@@ -43,8 +43,34 @@ if($arResult["FORM_TYPE"] == "login")
 					<input type="password" placeholder="<?=GetMessage("AUTH_PASSWORD")?>" name="USER_PASSWORD" maxlength="50" size="17" autocomplete="off" />			
 				</div>
 				<div class="frm-row">
-					<a href="" class="btn-forgot"><?=GetMessage("AUTH_FORGOT_PASSWORD_2")?></a>
+					<a href="<?=$arParams["FORGOT_PASSWORD_URL"]?>" class="btn-forgot"><?=GetMessage("AUTH_FORGOT_PASSWORD_2")?></a>
 				</div>
+                <?if ($arResult["CAPTCHA_CODE"]):?>
+                    <tr>
+                        <td colspan="2">
+                            <?echo GetMessage("AUTH_CAPTCHA_PROMT")?>:<br />
+                            <input type="hidden" name="captcha_sid" value="<?echo $arResult["CAPTCHA_CODE"]?>" />
+                            <img src="/bitrix/tools/captcha.php?captcha_sid=<?echo $arResult["CAPTCHA_CODE"]?>" width="180" height="40" alt="CAPTCHA" /><br /><br />
+                            <input type="text" name="captcha_word" maxlength="50" value="" /></td>
+                    </tr>
+                <?endif?>
+                <?if($arResult["AUTH_SERVICES"]):?>
+                    <tr>
+                        <td colspan="2">
+                            <div class="bx-auth-lbl"><?=GetMessage("socserv_as_user_form")?></div>
+                            <?
+                            $APPLICATION->IncludeComponent("bitrix:socserv.auth.form", "icons",
+                                array(
+                                    "AUTH_SERVICES"=>$arResult["AUTH_SERVICES"],
+                                    "SUFFIX"=>"form",
+                                ),
+                                $component,
+                                array("HIDE_ICONS"=>"Y")
+                            );
+                            ?>
+                        </td>
+                    </tr>
+                <?endif?>
 				<div class="frm-row">
 					<div class="frm-chk">
 						<input type="checkbox" id="login" name="USER_REMEMBER" value="Y"> <label for="login"><?=GetMessage("AUTH_REMEMBER_ME_SHORT")?></label>
@@ -54,9 +80,38 @@ if($arResult["FORM_TYPE"] == "login")
 					<input type="submit" name="Login" value="<?=GetMessage("AUTH_LOGIN_BUTTON")?>">
 				</div>
 			</form></li>
-		<li><a href=""><?=GetMessage("AUTH_REGISTER")?></a></li>
+		<li><a href="<?=$arParams["REGISTER_URL"]?>"><?=GetMessage("AUTH_REGISTER")?></a></li>
 	</ul>
 </nav>
-<?
-}
+    <?if($arResult["AUTH_SERVICES"]):?>
+    <?
+    $APPLICATION->IncludeComponent("bitrix:socserv.auth.form", "",
+        array(
+            "AUTH_SERVICES"=>$arResult["AUTH_SERVICES"],
+            "AUTH_URL"=>$arResult["AUTH_URL"],
+            "POST"=>$arResult["POST"],
+            "POPUP"=>"Y",
+            "SUFFIX"=>"form",
+        ),
+        $component,
+        array("HIDE_ICONS"=>"Y")
+    );
+    ?>
+<?endif?>
+<?php
+    }else{
 ?>
+    <nav class="menu-block">
+        <ul>
+            <li>
+                <a href="<?= $arParams["PROFILE_URL"]?>">
+                    <?= $USER->GetFullName();?>
+                    [<?= $USER->GetLogin();?>]
+                </a>
+            </li>
+            <li>
+                <a href="?logout=yes&sessid=<?=$_SESSION["fixed_session_id"];?>"><?=GetMessage("LOGOUT")?></a>
+            </li>
+        </ul>
+    </nav>
+<?php }?>
