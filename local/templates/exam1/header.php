@@ -1,8 +1,11 @@
+<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+IncludeTemplateLangFile(__FILE__);
+?>
 <!DOCTYPE html>
 <html lang="ru">
 
 <head>
-    <title>Главная</title>
+    <title><?= $APPLICATION->ShowTitle();?></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8" />
     <meta name="keywords" content="">
@@ -17,6 +20,7 @@
     <script src="./js/scripts.js"></script>
     <link rel="icon" type="image/vnd.microsoft.icon"  href="./img/favicon.ico">
     <link rel="shortcut icon" href="./img/favicon.ico">
+    <?$APPLICATION->ShowHead();?>
 </head>
 
 <body>
